@@ -3,14 +3,14 @@ Project Ttile    :  AI-based-Smart-Quiz-System
 Team Information : i) Name   : Chaon Das
                       ID     : 11210320629  
                       
-			       			 ii) Name   : Rakibur Rahman Mishan
+			       ii) Name   : Rakibur Rahman Mishan
                        ID     : 11220320829
                        
-			     		    iii) Name    : Sudipto Das
-                      ID       : 11220320830
+			       iii) Name   : Sudipto Das
+                        ID     : 11220320830
                       
-                  iv) Name     : Aditi Roy
-                      ID       : 11220320846
+                   iv) Name    : Aditi Roy
+                       ID      : 11220320846
 
 
  Proposed Features :
