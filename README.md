@@ -82,7 +82,12 @@ The AI-based Smart Quiz System solves these by automating question generation, d
 ---
 
 ##  Repository Structure
-
 AI-based-Smart-Quiz-System/
 
-└── README.md
+├── 📁 Week 03 Assignment/                     
+   ├── 📄 CSE4204-8A-T03_ArchitectureDiagram.pdf 
+   ├── 📄 CSE4204-8A-T03_ERDiagram.pdf          
+   ├── 📄 CSE4204-8A-T03_SRS.pdf                
+   ├── 📄 CSE4204-8A-T03_UseCaseDiagram.pdf      
+
+└── 📄 README.md
