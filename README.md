@@ -13,7 +13,7 @@
 
 ---
 
-## 📝 Project Description
+##  Project Description
 
 The **AI-based Smart Quiz System** is a complete online assessment platform built with Laravel 12, MySQL, and custom HTML/CSS/JavaScript. It supports two user roles: **Teacher** and **Student**.
 
@@ -29,7 +29,7 @@ This system integrates gamification, automated content creation, and academic in
 
 ---
 
-## ❗ Problem Statement
+##  Problem Statement
 
 Traditional online quiz systems suffer from:
 
@@ -42,7 +42,7 @@ The AI-based Smart Quiz System solves these by automating question generation, d
 
 ---
 
-## ✨ Proposed Features
+##  Proposed Features
 
 ### Student Side
 
@@ -68,7 +68,7 @@ The AI-based Smart Quiz System solves these by automating question generation, d
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Layer          | Technology                                           |
 |----------------|------------------------------------------------------|
@@ -81,5 +81,8 @@ The AI-based Smart Quiz System solves these by automating question generation, d
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
+AI-based-Smart-Quiz-System/
+
+└── README.md
