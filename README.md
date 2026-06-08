@@ -1,78 +1,85 @@
-# Project Title : AI-based Smart Quiz System
+# Project Title : AI-Based Smart Quiz System
 
 **Official Team Name:** CSE4204-8A-T03
 
----
+## 👥 Team Information
 
-## Team Information
-
-| Role            | Full Name               | Student ID     |
-|-----------------|-------------------------|----------------|
-| Team Leader+ Backend    | Sudipto Das             | 11220320830    |
-| Frontend       | Chaon Das               | 11210320629    |
-| Artificial Intelligence       | Rakibur Rahman Mishan   | 11220320829    |
-| Database       | Aditi Roy               | 11220320846    |
+| Role             | Full Name               | Student ID   |
+|------------------|-------------------------|--------------|
+| Team Leader + Backend | Sudipto Das           | 11220320830  |
+| Frontend         | Chaon Das               | 11210320629  |
+| Artificial Intelligence | Rakibur Rahman Mishan | 11220320829  |
+| Database         | Aditi Roy               | 11220320846  |
 
 ---
 
-## Project Description
+## 📝 Project Description
 
-The **AI-based Smart Quiz System** is a complete online assessment platform built with Laravel. It allows students to register, log in, and take timed quizzes across three difficulty levels (Easy, Medium, Hard). After submission, students receive immediate feedback including their score, correct answers, and explanations for wrong answers. A leaderboard displays rankings based on highest score and fastest completion time.
+The **AI-based Smart Quiz System** is a complete online assessment platform built with Laravel 12, MySQL, and custom HTML/CSS/JavaScript. It supports two user roles: **Teacher** and **Student**.
 
-Administrators (teachers) have a dedicated panel to manage the question bank – adding, viewing, and deleting questions. Each question stores the level, text, four options, the correct answer, and an explanation.
+- Teachers can create courses, manage multiple‑choice questions (MCQs), and use **Google Gemini AI** to automatically generate quiz questions.
+- Students can take timed quizzes, receive instant feedback with correct answers and explanations, and view a course‑wise leaderboard ranked by score and completion time.
 
-Two advanced AI features are integrated:
+**Key AI Features :**
 
-1. **AI Question Generation** – Administrators can generate high-quality multiple-choice questions simply by typing a topic. The system calls an AI API (Google Gemini/OpenAI) and auto‑fills the database, saving hours of manual work.
-2. **Cheating Detection** – During a quiz, the system detects if a student switches to another browser tab (tab‑switch detection using JavaScript `visibilitychange` event) and also flags submissions that are completed much faster than normal (average <5 seconds per question). Suspicious attempts are marked in the database (`is_suspicious` column in `quiz_attempts`) for admin review.
+1. **AI Question Generation** – Teachers enter a topic (e.g., "Mobile IP"); the system calls Gemini API, which returns a complete MCQ (question, four options, correct answer, explanation) and auto‑fills the question form.
+2. **Cheating Detection** – During a quiz, the system tracks browser tab switches (`visibilitychange` event) and calculates average time per question. If any tab switch occurs or average time < 5 seconds, the attempt is flagged as suspicious (`is_suspicious = true`) and stored for teacher review.
 
-This system combines gamification, automated content creation, and academic integrity monitoring to provide a modern, efficient, and trustworthy quiz platform.
-
----
-
-## Problem Statement
-
-Traditional online quiz systems suffer from several limitations:
-
-- Manual question creation is time‑consuming and repetitive for educators.
-- Cheating behaviors (tab switching, extremely fast answering) often go undetected.
-- Students receive delayed or no feedback after completing a quiz.
-- Lack of gamification reduces student engagement.
-
-The AI-based Smart Quiz System solves these problems by automating question generation using AI, detecting suspicious behavior in real time, providing instant results with explanations, and introducing difficulty levels to make learning more engaging.
+This system integrates gamification, automated content creation, and academic integrity monitoring into a modern, efficient quiz platform.
 
 ---
 
-## Proposed Features
+## ❗ Problem Statement
 
-### User Side (Student)
-- User registration and login (Laravel Breeze, customized redirects)
-- Homepage with typing animation, gradient background, and floating shapes
-- Three difficulty levels: Easy (8 questions), Medium (10 questions), Hard (10 questions)
-- Timer: 30 seconds per question (configurable), red pulse warning when ≤10 seconds left, auto-submit on timeout
-- Instant result page: score display, wrong answers with correct answer + explanation
-- Leaderboard: ranks users by best score and shortest completion time
+Traditional online quiz systems suffer from:
 
-### Admin Side (Teacher)
-- Dedicated admin panel (accessible only to `is_admin = 1`)
-- Add / delete questions with level, question text, 4 options, explanation, and correct answer
-- Dynamic correct-answer dropdown that populates from the option fields
+- Manual question creation – time‑consuming and repetitive.
+- Cheating behaviors (tab switching, extremely fast answering) often undetected.
+- Delayed or no feedback for students.
+- Lack of engagement and fair ranking.
 
-### AI-Powered Features
-- **AI Question Generation**: Admin enters a topic → AI (Gemini/OpenAI) generates a complete MCQ (question, 4 options, answer, explanation) and saves it to the database.
-- **Cheating Detection**:
-  - Tab‑switch detection using JavaScript `visibilitychange` event
-  - Early submission detection – flags attempts with average time <5 seconds per question (`is_suspicious` column in `quiz_attempts`)
+The AI-based Smart Quiz System solves these by automating question generation, detecting suspicious behavior in real time, providing instant results with explanations, and using a time‑aware leaderboard.
 
 ---
 
-## Technology Stack
+## ✨ Proposed Features
 
-| Layer          | Technology                                          |
-|----------------|-----------------------------------------------------|
+### Student Side
+
+- Registration and login (Laravel Breeze, customised redirects)
+- Student dashboard listing available courses
+- Timed quiz per course (time per question configurable by teacher)
+- Timer with visual warning (red pulse when ≤10 sec left) and auto‑submit on timeout
+- Instant result page: score, wrong answers with correct answers + explanations
+- Course‑wise leaderboard (ranked by highest score, then shortest time)
+
+### Teacher Side
+
+- Dedicated teacher panel (accessible only to `is_teacher = 1`)
+- **Course Management**: create, edit, delete courses; set time per question (seconds)
+- **Question Management**: add, edit, delete MCQs with 4 options, correct answer, explanation
+- **AI Question Generator** (for "Mobile Computing Lab" course only) – topic input, calls Gemini API, populates form
+- **Suspicious Attempts Report** – view flagged attempts with tab switch count, average time, student details
+
+### AI-Powered Features 
+
+- AI Question Generation using Google Gemini API (free tier)
+- Cheating Detection: tab‑switch tracking (`visibilitychange`) + early submission detection (average <5 sec/question)
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer          | Technology                                           |
+|----------------|------------------------------------------------------|
 | Frontend       | HTML5, Custom CSS (no framework), Vanilla JavaScript |
-| Backend        | Laravel 12 (PHP)                                   |
-| Database       | MySQL / PostgreSQL                                 |
-| Authentication | Laravel Breeze                                     |
-| AI Integration | Google Gemini API / OpenAI API                     |
-| Version Control| Git & GitHub                                       |
+| Backend        | Laravel 12 (PHP)                                     |
+| Database       | MySQL                                                |
+| Authentication | Laravel Breeze                                       |
+| AI Integration | Google Gemini API (free tier)                        |
+| Version Control| Git & GitHub                                         |
+
+---
+
+## 📁 Repository Structure
+
