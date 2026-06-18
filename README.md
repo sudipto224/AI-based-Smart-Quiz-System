@@ -81,3 +81,66 @@ The AI-based Smart Quiz System solves these by automating question generation, d
 ---
 
 ## 📁 Repository Structure
+AI-Based-Smart-Quiz-System/
+│
+
+├── 📁 Week 03 Assignment/
+
+│   ├── CSE4204-8A-T03_ArchitectureDiagram.pdf
+
+│   ├── CSE4204-8A-T03_ERDiagram.pdf
+
+│   ├── CSE4204-8A-T03_SRS.pdf
+
+│   └── CSE4204-8A-T03_UseCaseDiagram.pdf
+│
+
+├── 📁 diagrams/
+
+│   ├── 📁 Week 3/
+
+│   │   ├── CSE4204-8A-T03_ArchitectureDiagram.png
+
+│   │   ├── CSE4204-8A-T03_ERDiagram.png
+
+│   │   └── CSE4204-8A-T03_UseCaseDiagram.png
+
+│   └── 📁 Week 4/
+
+│       ├── CSE4204-8A-T03_ActivityDiagram.pdf
+
+│       ├── CSE4204-8A-T03_ERDiagram.pdf
+
+│       ├── CSE4204-8A-T03_ArchitectureDiagram.pdf
+
+│       └── CSE4204-8A-T03_UseCaseDiagram.pdf
+
+│
+├── 📁 documentation/
+
+│   ├── 📁 week1/
+
+│   │   └── CSE4204-8A-T03_Week01.pdf
+
+│   ├── 📁 week2/
+
+│   │   ├── CSE4204-8A-T03_Proposal.pdf
+
+│   │   └── CSE4204-8A-T03_TeamInfo.pdf
+
+│   ├── 📁 week3/
+
+│   │   └── CSE4204-8A-T03_SRS.pdf
+
+│   └── 📁 week4/
+
+│       ├── CSE4204-8A-T03_AIWorkflow.pdf
+
+│       ├── CSE4204-8A-T03_APIDesign.pdf
+
+│       ├── CSE4204-8A-T03_SystemDesign.pdf
+
+
+│      
+│
+└── README.md (root)
