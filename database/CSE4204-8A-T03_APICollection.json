@@ -1,0 +1,60 @@
+{
+  "info": {
+    "name": "AI-Based Smart Quiz System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Teacher Courses",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/teacher/courses",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["teacher", "courses"]
+        }
+      }
+    },
+    {
+      "name": "Create Course",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "name", "value": "Mobile Computing Lab" },
+            { "key": "description", "value": "AI features course" },
+            { "key": "time_per_question", "value": "30" }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/teacher/courses",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["teacher", "courses"]
+        }
+      }
+    },
+    {
+      "name": "Quiz Page",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/quiz/1",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["quiz", "1"]
+        }
+      }
+    }
+  ]
+}
