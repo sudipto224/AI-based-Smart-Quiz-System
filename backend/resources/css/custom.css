@@ -1,0 +1,121 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Figtree', sans-serif;
+    background-color: #f9fafb;
+}
+
+/* Container */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #1a237e;
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #0d1555;
+}
+
+.btn-success {
+    background-color: #2e7d32;
+    color: #fff;
+}
+.btn-success:hover {
+    background-color: #1b5e20;
+}
+
+.btn-danger {
+    background-color: #d32f2f;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: #b71c1c;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Quiz Timer */
+.timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a237e;
+}
+.timer-warning {
+    color: #d32f2f;
+    animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table th, .table td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.table th {
+    background-color: #1a237e;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+    .card {
+        padding: 1rem;
+    }
+}
