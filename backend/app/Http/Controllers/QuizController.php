@@ -6,19 +6,21 @@ use App\Models\Course;
 use App\Models\QuizAttempt;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class QuizController extends Controller
 {
-    // No constructor needed – middleware applied in routes
-
+    // ===================== SHOW QUIZ PAGE =====================
     public function show($course_id)
     {
-        $course = Course::findOrFail($course_id);
-        $questions = $course->questions;
-
-        return view('quiz', compact('course', 'questions'));
+        $course = Course::with('questions')->findOrFail($course_id);
+        return Inertia::render('Quiz/Index', [
+            'course' => $course,
+            'questions' => $course->questions,
+        ]);
     }
 
+    // ===================== SUBMIT QUIZ =====================
     public function submit(Request $request)
     {
         $request->validate([
@@ -44,7 +46,7 @@ class QuizController extends Controller
         // Cheating Detection
         $tabSwitches = $request->tab_switch_count;
         $startTime = $request->quiz_start_time;
-        $endTime = Carbon::now()->timestamp * 1000;
+        $endTime = now()->timestamp * 1000;
         $totalMs = $endTime - $startTime;
         $totalSeconds = $totalMs / 1000;
         $avgTime = $totalSeconds / $totalQuestions;

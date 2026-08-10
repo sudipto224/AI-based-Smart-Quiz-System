@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\QuizAttempt;
+use Inertia\Inertia;
 
 class LeaderboardController extends Controller
 {
@@ -18,8 +19,12 @@ class LeaderboardController extends Controller
             ->orderBy('seconds_taken', 'asc')
             ->get()
             ->unique('user_id')
-            ->take(10);
+            ->take(10)
+            ->values();
 
-        return view('leaderboard', compact('course', 'leaderboard'));
+        return Inertia::render('Leaderboard/Index', [
+            'course' => $course,
+            'leaderboard' => $leaderboard,
+        ]);
     }
 }

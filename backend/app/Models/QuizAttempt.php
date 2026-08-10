@@ -22,6 +22,11 @@ class QuizAttempt extends Model
         'started_at',
     ];
 
+    protected $casts = [
+        'is_suspicious' => 'boolean',
+        'started_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
