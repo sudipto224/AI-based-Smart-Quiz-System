@@ -11,9 +11,12 @@ export default function Index({ course, questions }) {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-                        <div className="flex justify-between items-center mb-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
                             <h2 className="text-2xl font-bold text-gray-800">❓ Questions – {course.name}</h2>
-                            <Link href={route('teacher.questions.create', course.id)} className="px-4 py-2 rounded-full font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition shadow">+ Add Question</Link>
+                            <div className="flex flex-wrap gap-3">
+                                <Link href={route('teacher.material-generator.show', course.id)} className="px-4 py-2 rounded-full font-medium text-white bg-slate-700 hover:bg-slate-800 transition shadow">📄 Generate Quiz from Material</Link>
+                                <Link href={route('teacher.questions.create', course.id)} className="px-4 py-2 rounded-full font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition shadow">+ Add Question</Link>
+                            </div>
                         </div>
 
                         {flash?.success && <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg">{flash.success}</div>}

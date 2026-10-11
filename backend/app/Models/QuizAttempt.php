@@ -12,8 +12,10 @@ class QuizAttempt extends Model
     protected $fillable = [
         'user_id',
         'course_id',
+        'quiz_session_id',
         'score',
         'total_questions',
+        'answers',
         'time_taken',
         'seconds_taken',
         'is_suspicious',
@@ -23,17 +25,29 @@ class QuizAttempt extends Model
     ];
 
     protected $casts = [
+        'answers' => 'array',
         'is_suspicious' => 'boolean',
         'started_at' => 'datetime',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(
+            User::class
+        );
     }
 
     public function course()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(
+            Course::class
+        );
+    }
+
+    public function quizSession()
+    {
+        return $this->belongsTo(
+            QuizSession::class
+        );
     }
 }

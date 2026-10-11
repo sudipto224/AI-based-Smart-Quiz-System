@@ -1,0 +1,22 @@
+# Local environment and credentials
+**/.env
+**/.env.*
+!**/.env.example
+**/auth.json
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.keystore
+
+# Dependencies and generated assets
+**/node_modules/
+**/vendor/
+**/build/
+**/dist/
+**/public/hot
+**/public/storage
+
+# Local nested repository snapshots
+/backend/repo-fix-temp/
+/backend/repo-fix-temp2/
