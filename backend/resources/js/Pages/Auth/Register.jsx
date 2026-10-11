@@ -90,12 +90,16 @@ export default function Register() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                                 Email Address
                             </label>
 
                             <input
+                                id="email"
                                 type="email"
+                                autoComplete="email"
+                                aria-invalid={Boolean(errors.email)}
+                                aria-describedby={errors.email ? 'email-error' : undefined}
                                 value={data.email}
                                 onChange={(e) =>
                                     setData(
@@ -108,7 +112,7 @@ export default function Register() {
                             />
 
                             {errors.email && (
-                                <p className="text-sm text-red-600 mt-1">
+                                <p id="email-error" role="alert" className="text-sm text-red-600 mt-1">
                                     {errors.email}
                                 </p>
                             )}
