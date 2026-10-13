@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
-    use HasFactory, MustVerifyEmailTrait, Notifiable;
+    use HasFactory, Notifiable;
 
+    /**
+     * The attributes that are mass assignable.
+     */
     protected $fillable = [
         'name',
         'email',
@@ -19,11 +20,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_teacher',
     ];
 
+    /**
+     * The attributes that should be hidden.
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    /**
+     * Get the attributes that should be cast.
+     */
     protected function casts(): array
     {
         return [
@@ -33,12 +40,17 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    // Relationships
+    /**
+     * Teacher courses relationship.
+     */
     public function courses()
     {
         return $this->hasMany(Course::class, 'teacher_id');
     }
 
+    /**
+     * Student quiz attempts relationship.
+     */
     public function quizAttempts()
     {
         return $this->hasMany(QuizAttempt::class);

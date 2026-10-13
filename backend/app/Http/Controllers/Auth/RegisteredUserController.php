@@ -10,14 +10,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
+     * Display the registration page.
      */
     public function create(): Response
     {
@@ -26,32 +25,46 @@ class RegisteredUserController extends Controller
 
     /**
      * Handle an incoming registration request.
-     *
-     * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        // Validate registration information
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+
+            'email' => 'required|string|lowercase|email|max:255|unique:users,email',
+
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::defaults(),
+            ],
+
+            'is_teacher' => 'sometimes|boolean',
         ], [
+            'name.required' => 'Please enter your full name.',
             'email.required' => 'Please enter your email address.',
-            'email.lowercase' => 'Please enter your email address in lowercase.',
             'email.email' => 'Please enter a valid email address.',
             'email.unique' => 'This email address is already registered.',
+            'password.required' => 'Please enter your password.',
+            'password.confirmed' => 'Passwords do not match.',
         ]);
 
+        // Create user account
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'is_teacher' => $request->boolean('is_teacher'),
         ]);
 
+        // Dispatch registration event
         event(new Registered($user));
 
+        // Automatically log in the new user
         Auth::login($user);
 
-        return redirect(route('verification.notice', absolute: false));
+        // Redirect directly to dashboard
+        return redirect()->route('dashboard');
     }
 }
