@@ -15,31 +15,21 @@ use Inertia\Response;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration page.
-     */
     public function create(): Response
     {
         return Inertia::render('Auth/Register');
     }
 
-    /**
-     * Handle an incoming registration request.
-     */
     public function store(Request $request): RedirectResponse
     {
-        // Validate registration information
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-
             'email' => 'required|string|lowercase|email|max:255|unique:users,email',
-
             'password' => [
                 'required',
                 'confirmed',
                 Rules\Password::defaults(),
             ],
-
             'is_teacher' => 'sometimes|boolean',
         ], [
             'name.required' => 'Please enter your full name.',
@@ -50,21 +40,25 @@ class RegisteredUserController extends Controller
             'password.confirmed' => 'Passwords do not match.',
         ]);
 
-        // Create user account
-        $user = User::create([
+        $requestedTeacher = (bool) ($validated['is_teacher'] ?? false);
+
+        // Never allow self-registration to grant privileged roles.
+        // An applicant waits for an administrator's verified approval.
+        $user = new User([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'is_teacher' => $request->boolean('is_teacher'),
         ]);
 
-        // Dispatch registration event
-        event(new Registered($user));
+        $user->is_teacher = false;
+        $user->teacher_status = $requestedTeacher ? 'pending' : null;
+        $user->is_admin = false;
+        $user->save();
 
-        // Automatically log in the new user
+        event(new Registered($user));
         Auth::login($user);
 
-        // Redirect directly to dashboard
+        // The dashboard controller shows the pending page to applicants.
         return redirect()->route('dashboard');
     }
 }

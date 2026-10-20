@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\StudentQuizSessionController;
@@ -28,7 +29,7 @@ Route::middleware(
             TeacherController::class,
             'checkQuestionQuality',
         ]
-    )->name(
+    )->middleware('teacher')->name(
         'teacher.check-question-quality'
     );
 
@@ -40,6 +41,7 @@ Route::middleware(
         ->name(
             'teacher.quiz-rooms.'
         )
+        ->middleware('teacher')
         ->group(function () {
 
             Route::get(
