@@ -31,6 +31,10 @@ return Application::configure(
     )
 
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(
+            at: '*',
+            headers: Request::HEADER_X_FORWARDED_PROTO,
+        );
 
         /*
          * Preserve Inertia and existing web middleware.

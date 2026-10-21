@@ -75,6 +75,8 @@ Create a Render PostgreSQL database in the same region as the web service and co
 | `DB_URL` | The Render PostgreSQL **internal** connection URL. Use the internal URL when services share a region. Alternatively set `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`. |
 | `RUN_MIGRATIONS` | `true` to run `php artisan migrate --force` when the container starts. Set to `false` only when migrations are run separately before deploy. |
 
+The Laravel middleware trusts Render's forwarded HTTPS protocol header so named routes and form submissions use the public HTTPS scheme.
+
 Laravel also needs outbound SMTP configuration for registration verification links: set `MAIL_MAILER=smtp`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, and `MAIL_FROM_ADDRESS`. Use `MAIL_SCHEME=smtps` for implicit TLS (commonly port `465`); for STARTTLS (commonly port `587`), leave `MAIL_SCHEME` unset. Set `MAIL_FROM_NAME` to `Quizora` if desired. Add `GROQ_API_KEY` as a Render secret to enable the existing AI question-generation features.
 
 Laravel's configured session, cache, and queue drivers use the database by default; PostgreSQL migrations run at startup when `RUN_MIGRATIONS=true`. Render's container filesystem is ephemeral, so configure a persistent disk or external object storage before relying on uploaded or generated files across deploys/restarts.
