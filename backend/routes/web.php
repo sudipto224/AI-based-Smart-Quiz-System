@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\DashboardController;
@@ -127,6 +128,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/leaderboard/{course_id}', [LeaderboardController::class, 'show'])
         ->name('leaderboard.show');
+
+    // ===================== NEW STUDENT AI SELF-PRACTICE =====================
+    // Student can create AI quizzes using a topic, PDF or PPTX.
+    // Student can take the quiz and view personal results.
+    // This feature is separate from teacher course quizzes.
+
+    require __DIR__ . '/student_ai_practice.php';
+
 });
 
 // ===================== QUIZORA EXTRA FEATURES =====================
